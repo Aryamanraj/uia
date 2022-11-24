@@ -112,9 +112,42 @@ app.get('/plotter', async (req, res) => {
     const arrayOfObject = Object.entries(hello).map((e)=> ({
         [e[0]]: e[1]
     }))
-    //const namee = Object.keys(hello);
-    //const amounter = hello["Amount"];
-    //const namee = []
+
+    const amounttt = []
+    const namee = []
+    const timerr = []
+    const latitudee = []
+    const long = []
+    const annuLow = []
+    const annuHigh = []
+    const type = []
+    const quality = []
+    // const nammee = []
+
+    for (let index = 0; index < arrayOfObject.length; index++) {
+        amounttt[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Amount"];
+
+        timerr[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Quality"];
+
+        latitudee[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Latitude"];
+
+        long[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Longitude"];
+
+        annuHigh[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Annual High"];
+
+        annuLow[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Annual Low"];
+
+        type[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Type"];
+
+        quality[index] = ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Quality"];
+
+    }
+    
+    // const namee = Object.keys(hello);
+    // const amounter = hello["Amount"];
+    
+    
+    // const namee = []
     // const output = []
     // const timerrr = []
     // const amounttt = []
@@ -127,7 +160,7 @@ app.get('/plotter', async (req, res) => {
     // const nammee = []
     // for (let index = 0; index < namee.length; index++) {
     //     nammee[index] = Object.keys(hello[namee[index]]);
-    //     amounttt[index] = hello[namee[0]][nammee][Amount]
+    //     amounttt[index] =  ((arrayOfObject[index])[Object.keys(arrayOfObject[index])])[Object.keys((arrayOfObject[index])[Object.keys(arrayOfObject[index])])]["Amount"]
     //     timerrr[index] = hello[namee[0]][nammee]["Time Stamp"]
     //     latitudee[index] = hello[namee[0]][nammee][Latitude]
     //     long[index] = hello[namee[0]][nammee][Longitude]
@@ -142,10 +175,12 @@ app.get('/plotter', async (req, res) => {
     //     //output[indexing] = [element[indexing], amounttt[indexing]]  
     //     output[indexing] = [nammee[indexing], amounttt[indexing], timerrr[indexing], latitudee[indexing], long[indexing], annuLow[indexing], annuHigh[indexing], type[indexing], quality[indexing]]
     // }
+
+
     if (!doc.exists) {
         return res.sendStatus(400)
     }
-    res.status(200).send(arrayOfObject)
+    res.status(200).send([amounttt, timerr, latitudee, long, annuHigh, annuLow, type, quality])
 })
 
 // app.get('/friends', async (req, res) => {
